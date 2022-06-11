@@ -1,12 +1,10 @@
-﻿<AuthorizeView>
+﻿@inject NavigationManager _navigationManager
+
+<AuthorizeView>
     <Authorized>
-        <a href="Identity/Account/Manage">Hello, @context.User.Identity?.Name!</a>
-        <form method="post" action="Identity/Account/LogOut">
-            <button type="submit" class="nav-link btn btn-link">Log out</button>
-        </form>
+        <MudIconButton Icon="@Icons.Material.Filled.Logout" Color="Color.Primary" aria-label="Logout" OnClick='@(() => _navigationManager.NavigateTo("/Identity/Account/LogOut", true))'></MudIconButton>
     </Authorized>
     <NotAuthorized>
-        <a href="Identity/Account/Register">Register</a>
-        <a href="Identity/Account/Login">Log in</a>
+        <MudIconButton Icon="@Icons.Material.Filled.Login" Color="Color.Primary" aria-label="Login" OnClick='@(() => _navigationManager.NavigateTo("/Identity/Account/Login", true))'></MudIconButton>
     </NotAuthorized>
 </AuthorizeView>

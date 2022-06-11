@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using MudBlazor.Services;
 using Stuntman.UI.Areas.Identity;
 using Stuntman.UI.Data;
 
@@ -18,6 +19,9 @@ namespace Stuntman.UI
             // Identity
             builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            // Mudblazor
+            builder.Services.AddMudServices();
 
             // Blazor services
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();

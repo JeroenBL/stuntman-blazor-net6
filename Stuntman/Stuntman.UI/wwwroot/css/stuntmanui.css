@@ -1,0 +1,7 @@
+﻿/*Centers the stuntman logo on the NavMenu.razor*/
+.center-logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+}

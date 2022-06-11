@@ -1,39 +1,22 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="">Stuntman.UI</a>
-        <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    </div>
-</div>
-
-<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
-    <nav class="flex-column">
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="oi oi-home" aria-hidden="true"></span> Home
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="counter">
-                <span class="oi oi-plus" aria-hidden="true"></span> Counter
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="fetchdata">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Fetch data
-            </NavLink>
-        </div>
-    </nav>
-</div>
-
-@code {
-    private bool collapseNavMenu = true;
-
-    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
-
-    private void ToggleNavMenu()
-    {
-        collapseNavMenu = !collapseNavMenu;
-    }
-}
+﻿<MudPaper Width="250px" Class="d-inline-flex py-3" Elevation="0">
+    <MudNavMenu Class="mud-width-full">
+        <img Src="/logo.png" class="center-logo"/>
+        <MudDivider Class="my-2" />
+        <MudNavLink Href="/dashboard" Icon="@Icons.Filled.Dashboard">Dashboard</MudNavLink>
+        
+        <MudNavGroup Title="User mangement" Icon="@Icons.Filled.ManageAccounts" Expanded="true">
+            <MudNavLink Href="/stuntman" Icon="@Icons.Filled.Group">Stuntman</MudNavLink>
+            <MudNavLink Href="/contracts" Icon="@Icons.Filled.Assignment">Contracts</MudNavLink>
+            <MudNavLink Href="/departments" Icon="@Icons.Filled.Business">Departments</MudNavLink>
+        </MudNavGroup>
+        <AuthorizeView>
+            <MudNavGroup Title="Settings" Icon="@Icons.Filled.AdminPanelSettings" Expanded="true">
+                <MudNavLink Href="/settings/application" Icon="@Icons.Filled.Settings">Application settings</MudNavLink>
+                <MudNavLink Href="/settings/db" Icon="@Icons.Filled.DataObject">Manage database</MudNavLink>
+                <MudNavLink Href="/settings/api" Icon="@Icons.Filled.Api">API</MudNavLink>
+                <MudNavLink Href="/settings/extensions" Icon="@Icons.Filled.Extension">Extensions</MudNavLink>
+            </MudNavGroup>
+        </AuthorizeView>
+        <MudNavLink Href="/settings/helpcenter" Icon="@Icons.Filled.HelpCenter">Help center</MudNavLink>
+    </MudNavMenu>
+</MudPaper>
